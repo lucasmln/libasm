@@ -1,18 +1,19 @@
 global		_ft_strcpy
 
+;rdi rsi rdx rcx r9 r8
+
 _ft_strcpy:
-	xor r12, r12
-	mov r12, rsi
 	jmp _loop
 
 _loop:
-	cmp [rdi], byte 0
+	mov r9, [rsi]
+	mov [rdi], r9
+	cmp [rsi], byte 0
 	jz _return
-	mov r12, [rdi]
-	mov [rsi], r12b
-	inc rsi
 	inc rdi
+	inc rsi
+	jmp _loop
 
 _return:
-	mov rax, r12
+	mov rax, rdi
 	ret
