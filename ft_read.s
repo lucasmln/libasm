@@ -6,12 +6,13 @@ global		_ft_read
 
 _ft_read:
 	xor rax, rax
+	xor r12, r12
+	mov r8, rdx
 	cmp rdi, -1
 	je _error_file
-	mov r8, rdx
 	mov rax, sys_read
 	syscall
-	cmp r8, rdx
+	cmp r8, byte 0
 	je _good_read
 	cmp rdx, r8
 	je _error_file
