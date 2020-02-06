@@ -7,7 +7,7 @@
 //size_t		ft_strlen(char *s);
 //char	*ft_strcpy(char *dst, const char *src);
 ssize_t		ft_write(int fd, char *msg, int len);
-ssize_t		ft_read(int fd, void *buf, size_t nbyte);
+int		ft_read(int fd, void *buf, size_t nbyte);
 
 int main(int argc, char *argv[])
 {
@@ -15,16 +15,16 @@ int main(int argc, char *argv[])
 	char	*src = argv[1];
 	char	*dst2;
 	char	*src2 = argv[1];
-	int		fd = open("ft_write.s", O_RDWR);
+	int		fd = open(argv[1], O_RDWR);
 	int		fd2 = open("test2.txt", O_RDWR);
 
-	if (!(dst = malloc(sizeof(char) * 20)))
+/*	if (!(dst = malloc(sizeof(char) * 20)))
 		return (-1);
 	if (!(dst2 = malloc(sizeof(char) * 20)))
 		return (-1);
 	dst = argv[2];
 	dst2 = argv[2];
-
+*/
 //	dst[19] = '\0';
 //	dst2[19] = '\0';
 /*
@@ -48,20 +48,20 @@ int main(int argc, char *argv[])
 	printf("fd = 1 good ret = %zd\n", write(2, "Salut les amis\n", 20));
 	printf("fd = 1 My ret = %zd\n", ft_write(2, "Salut les amis\n", 20));
 */	
-	size_t		buf_size = 1280;
-	ssize_t		ret = 1;
+	size_t		buf_size = 1;
+	int		ret = 1;
 	char	buf[buf_size + 1];
 	
 	ret = read(fd, buf, buf_size);
 	buf[buf_size] = '\0';
-	printf("true ret = %zd\n", ret);
+	printf("true ret = %d\n", ret);
 	printf("true = %s\n", buf);
 	close(fd);
 	printf("\n\n");
-	fd = open("ft_write.s", O_RDWR);
+	fd = open(argv[1], O_RDWR);
 	ret = ft_read(fd, buf, buf_size);
 	buf[buf_size] = '\0';
-	printf("my ret = %zd\n", ret);
+	printf("my ret = %d\n", ret);
 	printf("my = %s\n", buf);
 return 0;
 }

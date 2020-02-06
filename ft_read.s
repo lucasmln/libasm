@@ -1,19 +1,23 @@
-%define sys_read 0x20000003
+%define sys_read 0x2000003
+
+;rdi rsi rdx rcx r9 r8
 
 global		_ft_read
 
 _ft_read:
+	xor rax, rax
+	cmp rdi, -1
+	je _error_file
 	mov r8, rdx
-;	cmp rdi, byte -1
-;	je _error_file
-;	mov rax, 0
 	mov rax, sys_read
 	syscall
+	cmp r8, rdx
+	je _good_read
+	cmp rdx, r8
+	je _error_file
 	ret
-;	cmp r8, byte 0
-;	je _read_ok
 
-_read_ok:
+_good_read:
 	ret
 
 _error_file:
