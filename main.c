@@ -8,6 +8,7 @@
 //char	*ft_strcpy(char *dst, const char *src);
 ssize_t		ft_write(int fd, char *msg, int len);
 int		ft_read(int fd, void *buf, size_t nbyte);
+char	*ft_strdup(char *s);
 
 int main(int argc, char *argv[])
 {
@@ -48,7 +49,7 @@ int main(int argc, char *argv[])
 	printf("fd = 1 good ret = %zd\n", write(2, "Salut les amis\n", 20));
 	printf("fd = 1 My ret = %zd\n", ft_write(2, "Salut les amis\n", 20));
 */	
-	size_t		buf_size = 1;
+/*	size_t		buf_size = 0;
 	int		ret = 1;
 	char	buf[buf_size + 1];
 	
@@ -63,5 +64,12 @@ int main(int argc, char *argv[])
 	buf[buf_size] = '\0';
 	printf("my ret = %d\n", ret);
 	printf("my = %s\n", buf);
-return 0;
+*/
+	char *s2;
+	int temp;
+	printf("original : %s\n", argv[1]);
+	s2 = ft_strdup(argv[1]);
+	printf("original : %s\n", s2);
+
+	return 0;
 }
