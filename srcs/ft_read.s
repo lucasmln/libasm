@@ -5,7 +5,7 @@ extern	__errno_location
 
 
 ft_read:
-	xor rax, rax
+	mov rax, 0
 	syscall
 	cmp rax, 0
 	jl  _error

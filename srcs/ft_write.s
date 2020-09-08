@@ -6,14 +6,14 @@ extern		__errno_location
 ; write : 0x2000004
 
 ft_write:
-		xor rax, rax
-		mov r8, rdx
-		mov rcx, rsi
-		mov rax, 1
-		syscall
-		cmp rax, 0
-		jl	_error_write
-		ret
+	xor rax, rax
+	mov r8, rdx
+	mov rcx, rsi
+	mov rax, 1
+	syscall
+	cmp rax, 0
+	jl	_error_write
+	ret
 
 _error_write:
 	neg rax
